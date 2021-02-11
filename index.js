@@ -28,7 +28,7 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  Counter 1 uses a nested function and a closure of "count" to iterate the counter. Counter 2 take in a global count variable and iterates it within a single function.
+  Counter 1 uses a nested function and a closure of "count" to iterate the counter. Counter 2 take in a global count variable and iterates it within a single function producing a potential for the count variable to be 'collected with the trash' where it starts over each time.
 
   2. Which of the two uses a closure? How can you tell?
   Counter 1 does; it closes the count variable within the counter() function taht is being returned by counterMaker
