@@ -34,7 +34,7 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Counter 1 does; it closes the count variable within the counter() function taht is being returned by counterMaker
   
   3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?  
-  Gonna need to come back to this one because it is a question I still have muyself.
+  I *think* counter1 would be preferable if I was trying to continue using the counter and having it increment where I left off; by creating a closure within the memory I could keep calling counter1 and having counterMaker() continue to increment the count variable. If I happened to want the counter variable to start its count over each time, I would want to use counter2.
 */
 
 // counter1 code
@@ -145,8 +145,26 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+ function scoreboard(inningFunction, scoreFunction, numInn) {
+    let cumAway = 0;
+    let cumHome = 0;
+    let tempHome = 0;
+    let tempAway = 0;
+    const scoreArray = [];
+    for (let i = 0; i < numInn; i++) {
+        tempHome = scoreFunction();
+        tempAway = scoreFunction();
+        scoreArray.push(`Inning ${(i+1)}: Away ${tempAway} - Home ${tempHome}`);
+        cumAway += tempAway;
+        cumHome += tempHome;
+    }
+    if (cumAway === cumHome) {
+      scoreArray.push(`This game will require extra innings: Away ${cumAway} - Home ${cumHome}`);
+    }
+    else {
+      scoreArray.push(`Final Score: Away ${cumAway} - Home ${cumHome}`);
+    }
+    return scoreArray;
 }
 
 
