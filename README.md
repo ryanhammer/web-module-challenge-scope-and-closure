@@ -43,6 +43,8 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+Closure is what occurs when we close a variable off within the lexical scope of a function and its outer environment.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -64,8 +66,12 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+Closure is used with the newRoll variable, because it is defined within the scope of the anonymous function that returns as the result of invoking the personalDice function. I can tell because newRoll is only accessible by the anonymous function that is being returned by personalDice.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+Each time dansRoll is called, the name parameter within personalDice will stay the same, as Dan, because it is defined within the scope of calling personalDice. The 'outcome of Dan's roll' will change, because it is being created by newRoll, which is closed within the anonymous function being returned by personalDice. So each time dansRoll is called, it invokes that anonymous function to create a new random number to assign to newRoll, thus simulating a random roll of a number cube.
 c. What is the lexical scope of `newRoll`? 
+newRoll is closed within the anonymous function being returned by personalDice.
 
 
 ### Task 3 - Stretch Goals
