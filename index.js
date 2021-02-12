@@ -148,15 +148,13 @@ Use the scoreboard function below to do the following:
  function scoreboard(inningFunction, scoreFunction, numInn) {
     let cumAway = 0;
     let cumHome = 0;
-    let tempHome = 0;
-    let tempAway = 0;
+    let tempScore = new Object;
     const scoreArray = [];
     for (let i = 0; i < numInn; i++) {
-        tempHome = scoreFunction();
-        tempAway = scoreFunction();
-        scoreArray.push(`Inning ${(i+1)}: Away ${tempAway} - Home ${tempHome}`);
-        cumAway += tempAway;
-        cumHome += tempHome;
+        tempScore = inningFunction(scoreFunction);
+        scoreArray.push(`Inning ${(i+1)}: Away ${tempScore.Away} - Home ${tempScore.Home}`);
+        cumAway += tempScore.Away;
+        cumHome += tempScore.Home;
     }
     if (cumAway === cumHome) {
       scoreArray.push(`This game will require extra innings: Away ${cumAway} - Home ${cumHome}`);
